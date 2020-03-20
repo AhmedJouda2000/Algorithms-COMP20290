@@ -1,5 +1,5 @@
 
-public class algo3_hanoi {
+public class Prac3b_hanoi {
 	// Java recursive function to solve tower of hanoi puzzle
 	static void towerOfHanoi(int n, char from_rod, char to_rod, char aux_rod) {
 		if (n == 1) {

@@ -1,5 +1,5 @@
 
-public class algo3_fib {
+public class Prac3a_fib {
 	public static int fibRecursion(int i) {
 		if (i == 0) {
 			return 0;
