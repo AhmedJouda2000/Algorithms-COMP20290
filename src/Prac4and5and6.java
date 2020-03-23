@@ -1,6 +1,154 @@
 import java.util.Random;
 
-public class Prac4and5 {
+public class Prac4and5and6 {
+	
+	//LAB 6 - IMPROVED QUICK SORT
+	public static void improvedQuickSort(int[] values) {
+			//shuffle at start to avoid worst case scenario
+			knuthShuffle(values);
+        	int number = values.length;
+        	improvedSort(values, 0, number-1);
+        }
+	
+		public static void improvedSort(int values[], int low, int high) {
+			
+	        // check for empty array
+	        if (values ==null || values.length==0){
+	            return;
+	        }
+	        
+	        //Improvement 1 - insertion sort
+	        if (values.length <= 10) {
+				insertionSort(values);
+			}
+	        
+	        if (high<=low) {
+				return;
+			}
+	        else {
+	        	// Sort low, middle, high
+	            int middle = ( low + high ) / 2;
+	            if( values[ middle ] < values[ low ] )
+	                exchange( values, low, middle );
+	            if( values[ high ] < values[ low ] )
+	                exchange( values, low, high );
+	            if( values[ high ] < values[ middle ]  )
+	                exchange(values, middle, high );
+	        	
+	         // Place pivot at position high - 1
+	            exchange( values, middle, high - 1 );
+	            int pivot = values[ high - 1 ];
+	            
+	         // Begin partitioning
+	            int i = low, j = high;	       
+
+	            // Divide into two lists
+	            while (i <= j) {
+	                // If the current value from the left list is smaller than the pivot
+	                // element then get the next element from the left list
+	                while (values[i] < pivot) {
+	                    i++;
+	                }
+	                // If the current value from the right list is larger than the pivot
+	                // element then get the next element from the right list
+	                while (values[j] > pivot) {
+	                    j--;
+	                }
+
+	                // If we have found a value in the left list which is larger than
+	                // the pivot element and if we have found a value in the right list
+	                // which is smaller than the pivot element then we exchange the
+	                // values.
+	                // As we are done we can increase i and j
+	                if (i <= j) {
+	                    exchange(values, i, j);
+	                    i++;
+	                    j--;
+	                }
+	            }
+	             
+	            // Restore pivot
+	            exchange( values, i, high - 1 );
+	            
+	        	improvedSort(values, low, i-1);
+	        	improvedSort(values, i+1, high);
+	    		
+	    	}
+	    		
+	        }
+		
+		
+	
+	
+	//Improvement 2 - Shuffle to avoid worst case
+	public static void knuthShuffle(int[] a) {
+        int n = a.length;
+        for (int i = 0; i < n; i++) {
+            // choose index uniformly in [0, i]
+            int r = (int) (Math.random() * (i + 1));
+            int swap = a[r];
+            a[r] = a[i];
+            a[i] = swap;
+        }
+    }
+	
+	
+	//LAB 6 - QUICK SORT
+	public static void quickSort(int[] values) {
+        // check for empty array
+        if (values ==null || values.length==0){
+            return;
+        }
+    
+        int number = values.length;
+        sort(values, 0, number - 1);
+    }
+
+    private static void sort(int numbers[], int low, int high) {
+        int i = low, j = high;
+        // Get the pivot element from the middle of the list
+        int pivot = numbers[high-1];
+
+        // Divide into two lists
+        while (i <= j) {
+            // If the current value from the left list is smaller than the pivot
+            // element then get the next element from the left list
+            while (numbers[i] < pivot) {
+                i++;
+            }
+            // If the current value from the right list is larger than the pivot
+            // element then get the next element from the right list
+            while (numbers[j] > pivot) {
+                j--;
+            }
+
+            // If we have found a value in the left list which is larger than
+            // the pivot element and if we have found a value in the right list
+            // which is smaller than the pivot element then we exchange the
+            // values.
+            // As we are done we can increase i and j
+            if (i <= j) {
+                exchange(numbers, i, j);
+                i++;
+                j--;
+            }
+        }
+        // Recursion
+        if (low < j)
+            sort(numbers, low, j);
+        if (i < high)
+            sort(numbers, i, high);
+    }
+
+    private static void exchange(int numbers[], int i, int j) {
+        int temp = numbers[i];
+        numbers[i] = numbers[j];
+        numbers[j] = temp;
+    }
+
+  
+  
+    
 	
 	//LAB 5 - IMPROVED MERGESORT
 	public static void improvedMergeSort(int a[]) {
@@ -75,6 +223,8 @@ public class Prac4and5 {
 			}
 			}
 
+	
+	
 	// LAB 4 - SELECTION SORT
 	public static void selectionSort(int arr[]) {
 		int n = arr.length;
@@ -166,7 +316,7 @@ public class Prac4and5 {
 
 		System.out.println("*****Testing in Main*****");
 		//use an integer variable to decide which sorting algorithm to use below
-		int type = 1; 
+		int type = 6; 
 
 					
 		///adjust input size to vary size of arrays
@@ -212,6 +362,14 @@ public class Prac4and5 {
 								
 								case 4:
 								improvedMergeSort(nums);
+								break;
+								
+								case 5:
+								quickSort(nums);
+								break;
+								
+								case 6:
+								improvedQuickSort(nums);
 								break;
 								
 								default:
