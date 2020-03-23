@@ -1,8 +1,8 @@
-import java.sql.Time;
+import java.util.Random;
 
-public class algo4_sorting {
+public class Prac4and5 {
 	
-	//IMPROVED MERGESORT
+	//LAB 5 - IMPROVED MERGESORT
 	public static void improvedMergeSort(int a[]) {
 		int n = a.length;
 	    if (n < 2) {
@@ -32,7 +32,7 @@ public class algo4_sorting {
 	    
 	}
 	
-	//MERGESORT
+	//LAB - 5 MERGESORT
 	public static void mergeSort(int[] a) {
 		int n = a.length;
 	    if (n < 2) {
@@ -75,8 +75,8 @@ public class algo4_sorting {
 			}
 			}
 
-	// SELECTION SORT
-	public void selectionSort(int arr[]) {
+	// LAB 4 - SELECTION SORT
+	public static void selectionSort(int arr[]) {
 		int n = arr.length;
 
 		// One by one move boundary of unsorted subarray
@@ -95,7 +95,7 @@ public class algo4_sorting {
 		}
 	}
 
-	// INSERTION SORT
+	// LAB 4 - INSERTION SORT
 	public static void insertionSort(int arr[]) {
 		int n = arr.length;
 		for (int i = 1; i < n; ++i) {
@@ -114,8 +114,8 @@ public class algo4_sorting {
 		}
 	}
 
-	// SILLY SORT - BOGO
-	void bogoSort(int[] a) 
+	// LAB 4 - SILLY SORT - BOGO
+	public static void bogoSort(int[] a) 
     { 
         // if array is not sorted then shuffle the 
         // array again 
@@ -123,8 +123,8 @@ public class algo4_sorting {
             shuffle(a); 
     } 
   
-    // To generate permuatation of the array 
-    void shuffle(int[] a) 
+    // To generate permutation of the array 
+    public static void shuffle(int[] a) 
     { 
          // Math.random() returns a double positive 
          // value, greater than or equal to 0.0 and 
@@ -134,7 +134,7 @@ public class algo4_sorting {
     } 
   
     // Swapping 2 elements 
-    void swap(int[] a, int i, int j) 
+    public static void swap(int[] a, int i, int j) 
     { 
         int temp = a[i]; 
         a[i] = a[j]; 
@@ -142,7 +142,7 @@ public class algo4_sorting {
     } 
   
     // To check if array is sorted or not 
-    boolean isSorted(int[] a) 
+    public static boolean isSorted(int[] a) 
     { 
         for (int i=1; i<a.length; i++) 
             if (a[i] < a[i-1]) 
@@ -152,18 +152,80 @@ public class algo4_sorting {
     
     
 	// Prints the array
-	void printArray(int arr[]) {
+	private static void printArray(int arr[]) {
 		int n = arr.length;
 		for (int i = 0; i < n; ++i)
 			System.out.print(arr[i] + " ");
 		System.out.println();
 	}
 
-	public static void main(String[] args) {
-		algo4_sorting ob = new algo4_sorting();
-		int[] arr = { 10, 12, 9, 10, 2, 15, 14 };
-		algo4_sorting.mergeSort(arr);
-		ob.printArray(arr);
-	}
+	
+	//generate a random number
+	private static Random r = new Random(System.currentTimeMillis());
+	public static void main(String args[]) { 
+
+		System.out.println("*****Testing in Main*****");
+		//use an integer variable to decide which sorting algorithm to use below
+		int type = 3; 
+
+					
+		///adjust input size to vary size of arrays
+		for (int inputSize = 1; inputSize < 1001; inputSize*=10) {
+		//vary total Runs to give you many empirical tests
+			System.out.println("InputSize: " + inputSize);
+			
+			int totalRuns = 1000;
+			System.out.println("Total runs: " + totalRuns); 
+		    
+
+			long totalruntime = 0;
+
+			for (int run = 0; run < totalRuns; run++) {
+
+			int[] nums = new int[inputSize];
+
+		    for (int i = 0; i < nums.length; i++) {
+			 nums[i] = r.nextInt(5 * inputSize);
+			  }
+		    
+		    
+		  
+		    long time = System.nanoTime();
+
+							switch (type) {
+								case 0:
+							     selectionSort(nums);
+								break;
+								
+								case 1:
+								insertionSort(nums);
+								break;
+								
+								case 2:
+								bogoSort(nums);
+								break;
+								
+								case 3:
+								mergeSort(nums);
+								break;
+								
+								case 4:
+								improvedMergeSort(nums);
+								break;
+								
+								default:
+									System.err.printf("Invalid Sort number");
+									System.exit(-2);
+							}
+
+
+							totalruntime += System.nanoTime() - time;
+
+						}
+						//printout runtime.
+						System.out.println("Total run time " + totalruntime);
+					}
+
+				}
 
 }
