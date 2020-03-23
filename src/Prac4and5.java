@@ -129,7 +129,7 @@ public class Prac4and5 {
          // Math.random() returns a double positive 
          // value, greater than or equal to 0.0 and 
          // less than 1.0. 
-         for (int i=1; i <= a.length; i++) 
+         for (int i=1; i < a.length; i++) 
              swap(a, i, (int)(Math.random()*i)); 
     } 
   
@@ -166,23 +166,24 @@ public class Prac4and5 {
 
 		System.out.println("*****Testing in Main*****");
 		//use an integer variable to decide which sorting algorithm to use below
-		int type = 3; 
+		int type = 0; 
 
 					
 		///adjust input size to vary size of arrays
-		for (int inputSize = 1; inputSize < 1001; inputSize*=10) {
+		for (int inputSize = 10; inputSize < 1001; inputSize*=10) {
 		//vary total Runs to give you many empirical tests
-			System.out.println("InputSize: " + inputSize);
+			System.out.println("\nInputSize: " + inputSize);
 			
 			int totalRuns = 1000;
 			System.out.println("Total runs: " + totalRuns); 
 		    
 
 			long totalruntime = 0;
+			int[] nums = null;
 
 			for (int run = 0; run < totalRuns; run++) {
 
-			int[] nums = new int[inputSize];
+			nums = new int[inputSize];
 
 		    for (int i = 0; i < nums.length; i++) {
 			 nums[i] = r.nextInt(5 * inputSize);
@@ -222,8 +223,17 @@ public class Prac4and5 {
 							totalruntime += System.nanoTime() - time;
 
 						}
+			
+						long timeToPrint = System.nanoTime();
+						//print sorted array
+						System.out.print("Sorted Array: ");
+						printArray(nums);
+						totalruntime += System.nanoTime() - timeToPrint;
+						
 						//printout runtime.
 						System.out.println("Total run time " + totalruntime);
+						
+						
 					}
 
 				}
