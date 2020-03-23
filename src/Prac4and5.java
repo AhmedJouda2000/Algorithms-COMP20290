@@ -166,11 +166,11 @@ public class Prac4and5 {
 
 		System.out.println("*****Testing in Main*****");
 		//use an integer variable to decide which sorting algorithm to use below
-		int type = 0; 
+		int type = 1; 
 
 					
 		///adjust input size to vary size of arrays
-		for (int inputSize = 10; inputSize < 1001; inputSize*=10) {
+		for (int inputSize = 10; inputSize < 100001; inputSize*=10) {
 		//vary total Runs to give you many empirical tests
 			System.out.println("\nInputSize: " + inputSize);
 			
@@ -224,11 +224,11 @@ public class Prac4and5 {
 
 						}
 			
-						long timeToPrint = System.nanoTime();
+						//long timeToPrint = System.nanoTime();
 						//print sorted array
-						System.out.print("Sorted Array: ");
-						printArray(nums);
-						totalruntime += System.nanoTime() - timeToPrint;
+						//System.out.print("Sorted Array: ");
+						//printArray(nums);
+						//totalruntime += System.nanoTime() - timeToPrint;
 						
 						//printout runtime.
 						System.out.println("Total run time " + totalruntime);
