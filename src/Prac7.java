@@ -3,7 +3,7 @@ public class Prac7 {
 	
 	
 	// brute force method
-	public static int bruteForceSearch(String text, String pattern) {
+	public static void bruteForceSearch(String text, String pattern) {
 
 		int n = text.length();
 		int m = pattern.length();
@@ -20,13 +20,13 @@ public class Prac7 {
 			}
 			if (j == m) 
 			{
-				return i;	//return position where the match was found in text - stops at 1st occurrence of pattern
+				System.out.println("Pattern at index: " + i);	//print position where the match was found in text - stops at 1st occurrence of pattern
 			}
 		}
-		
-		return n;		
+				
 	}
 	
+	//part 2
 	static void KMPSearch(String pat, String txt) 
     { 
         int M = pat.length(); 
@@ -50,6 +50,7 @@ public class Prac7 {
                 System.out.println("Pattern at index: " + (i - j)); 
                 j = lps[j - 1]; 
             } 
+            
   
             // mismatch after j matches 
             else if (i < N && pat.charAt(j) != txt.charAt(i)) { 
@@ -61,6 +62,7 @@ public class Prac7 {
                     i = i + 1; 
             } 
         } 
+        
         
     } 
   
@@ -102,13 +104,106 @@ public class Prac7 {
 	//main driver/testing method
 	public static void main(String[] args) {
 		System.out.println("BRUTE FORCE METHOD");
-		String txtString = "AHMEDJJABDUL";
-		String patString = "JJ";
-		System.out.println("Pattern at index: " + bruteForceSearch(txtString, patString));
+		long startBFtime = 0;
+		long endBFtime = 0;
+		long BFtotal = 0;
+		String patString = null;
+		String txtString = null;
+		//Pattern at start:
+		startBFtime = System.nanoTime();
+		txtString = "AHMEDJOUDASTUDIESCOMPUTERSCIENCE";
+		patString = "AHMEDJOUDA";
+		bruteForceSearch(txtString, patString);
+		endBFtime = System.nanoTime();
+		BFtotal = endBFtime - startBFtime;
+		System.out.println("BF Time: " + BFtotal);
 		
-		System.out.println("KNUTH MORRIS PRATT METHOD");
-		String txt = "ABABDABACDABABCABAB"; 
-	    String pat = "ABABCABAB"; 
-	    KMPSearch(pat, txt);
+		//No pattern in text:
+		startBFtime = System.nanoTime();
+		txtString = "AHMEDJOUDASTUDIESCOMPUTERSCIENCE";
+		patString = "AHMEDALI";
+		bruteForceSearch(txtString, patString);
+		endBFtime = System.nanoTime();
+		BFtotal = endBFtime - startBFtime;
+		System.out.println("BF Time: " + BFtotal);
+		
+		//Pattern in the middle:
+		startBFtime = System.nanoTime();
+		txtString = "STUDIESAHMEDJOUDACOMPUTERSCIENCE";
+		patString = "AHMEDJOUDA";
+		bruteForceSearch(txtString, patString);
+		endBFtime = System.nanoTime();
+		BFtotal = endBFtime - startBFtime;
+		System.out.println("BF Time: " + BFtotal);
+		
+		//Pattern at the end(no similar patterns before):
+		startBFtime = System.nanoTime();
+		txtString = "STUDIESCOMPUTERSCIENCEAHMEDJOUDA";
+		patString = "AHMEDJOUDA";
+		bruteForceSearch(txtString, patString);
+		endBFtime = System.nanoTime();
+		BFtotal = endBFtime - startBFtime;
+		System.out.println("BF Time: " + BFtotal);
+		
+		//Pattern at the end(Similar patterns before):
+		startBFtime = System.nanoTime();
+		txtString = "AHMEDJOUDCOMPUTERSCIENCEAHMEDJOUDA";
+		patString = "AHMEDJOUDA";
+		bruteForceSearch(txtString, patString);
+		endBFtime = System.nanoTime();
+		BFtotal = endBFtime - startBFtime;
+		System.out.println("BF Time: " + BFtotal);
+		
+		
+		System.out.println("\n\nKNUTH MORRIS PRATT METHOD");
+			long startKPMStime = 0;
+			long endKPMStime = 0;
+			long KPMStotal = 0;
+			String txt = null;
+			String pat = null;
+			//Pattern at start:
+			startKPMStime = System.nanoTime();
+	  		txt = "AHMEDJOUDASTUDIESCOMPUTERSCIENCE";
+	  		pat = "AHMEDJOUDA";
+	  		KMPSearch(pat, txt);
+	  		endKPMStime = System.nanoTime();
+	  		KPMStotal = endKPMStime - startKPMStime;
+			System.out.println("KPMS Time: " + KPMStotal);
+	  		
+	  		//No pattern in text:
+			startKPMStime = System.nanoTime();
+	  		txt = "AHMEDJOUDASTUDIESCOMPUTERSCIENCE";
+	  		pat = "AHMEDALI";
+	  		KMPSearch(pat, txt);
+	  		endKPMStime = System.nanoTime();
+			KPMStotal = endKPMStime - startKPMStime;
+			System.out.println("KPMS Time: " + KPMStotal);
+	  		
+	  		//Pattern in the middle:
+	  		startKPMStime = System.nanoTime();
+	  		txt = "STUDIESAHMEDJOUDACOMPUTERSCIENCE";
+	  		pat = "AHMEDJOUDA";
+	  		KMPSearch(pat, txt);
+	  		endKPMStime = System.nanoTime();
+			KPMStotal = endKPMStime - startKPMStime;
+			System.out.println("KPMS Time: " + KPMStotal);
+	  		
+	  		//Pattern at the end(no similar patterns before):
+	  		startKPMStime = System.nanoTime();
+	  		txt = "STUDIESCOMPUTERSCIENCEAHMEDJOUDA";
+	  		pat = "AHMEDJOUDA";
+	  		KMPSearch(pat, txt);
+	  		endKPMStime = System.nanoTime();
+			KPMStotal = endKPMStime - startKPMStime;
+			System.out.println("KPMS Time: " + KPMStotal);
+	  		
+	  		//Pattern at the end(Similar patterns before):
+	  		startKPMStime = System.nanoTime();
+	  		txt = "AHMEDJOUDCOMPUTERSCIENCEAHMEDJOUDA";
+	  		pat = "AHMEDJOUDA";
+	  		KMPSearch(pat, txt);
+	  		endKPMStime = System.nanoTime();
+			KPMStotal = endKPMStime - startKPMStime;
+			System.out.println("KPMS Time: " + KPMStotal);
 	}
 }
