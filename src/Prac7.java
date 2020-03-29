@@ -1,7 +1,7 @@
 
 public class Prac7 {
 	
-	//1st part
+	
 	// brute force method
 	public static int bruteForceSearch(String text, String pattern) {
 
