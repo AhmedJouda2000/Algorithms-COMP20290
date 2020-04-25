@@ -1,4 +1,8 @@
-import com.sun.tools.classfile.StackMapTable_attribute.same_frame;
+package Assignment;
+//import com.sun.tools.classfile.StackMapTable_attribute.same_frame;
+
+//import BinaryStdIn;
+//import BinaryStdOut;
 
 /******************************************************************************
  *  Compilation:  javac Huffman.java
@@ -97,11 +101,22 @@ public class Huffman {
     public static void decompress() {
 
         // read in Huffman trie from input stream
-
+    	Node rootNode = readTrie();
+    	
         // number of bytes to write
+    	int N = BinaryStdIn.readInt();
 
         // decode using the Huffman trie
-
+    	for (int i = 0; i < N; i++) 
+    	{
+			Node tempNode = rootNode;
+			while (!tempNode.isLeaf()) 
+				if (BinaryStdIn.readBoolean())
+					tempNode = tempNode.right;
+				else tempNode = tempNode.left;
+			BinaryStdOut.write(tempNode.ch);			
+		}
+    	BinaryStdOut.close();
     }
 
     // build the Huffman trie given frequencies
