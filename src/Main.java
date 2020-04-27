@@ -20,7 +20,10 @@ public class Main {
 			System.out.println("Enter 7 for Merge Sort           [Practical 5]");
 			System.out.println("Enter 8 for Improved Merge Sort  [Practical 5]");
 			System.out.println("Enter 9 for Quick Sort           [Practical 6]");
-			System.out.println("Enter 10 for Improved Quick Sor  [Practical 6]");
+			System.out.println("Enter 10 for Improved Quick Sort [Practical 6]");
+			System.out.println("Enter 11 for Substring Search    [Practical 7]");
+			System.out.println("Enter 12 for Trie                [Practical 8]");
+			System.out.println("Enter 13 for Run Length Encoding [Practical 9]");
 			System.out.println("Enter 0 to exit");
 			System.out.print("Select which program you want to run/test: ");
 			
@@ -152,7 +155,7 @@ public class Main {
 				break;
 				
 			case 10:
-				// Merge sort - Prac5
+				// Improved Quick sort - Prac6
 				System.out.println("You selected Improved Quick Sort");
 				System.out.println("Let us test a sample array:");
 				int arr7[] = { 29, 60, 4, 72, 17, 12, 15, 6, 7, 23, 18, 19, 68};
@@ -164,6 +167,50 @@ public class Main {
 				Prac4and5and6.printArray(arr7);
 				System.out.println("*Note: For extensive timed tests check Prac4and5and6.java");
 				System.out.println("*Note: Look at Prac6Doc.docx for analysis");
+				break;
+				
+			case 11:
+				// Substring search - Prac7
+				System.out.println("You selected Substring Search");
+				System.out.println("Let us test a sample text:");
+				String txtString = "STUDIESAHMEDJOUDACOMPUTERSCIENCE";
+				String patString = "AHMEDJOUDA";
+				System.out.println("Text: " + txtString);
+				System.out.println("Pattern: " + patString);
+				System.out.println("Expected outcome:");
+				System.out.println("Pattern at index: 7");
+				System.out.println("Actual outcome using Brute Force: ");
+				Prac7.bruteForceSearch(txtString, patString);
+				System.out.println("Actual outcome using KMPS: ");
+				Prac7.KMPSearch(patString, txtString);
+				System.out.println("*Note: For extensive timed tests check Prac7.java");
+				break;
+				
+			case 12:
+				// Trie - Prac8
+				System.out.println("You selected a Trie");
+				System.out.println("Let us input the keys: {\"red\", \"blue\", \"yellow\"}");
+				System.out.println("Now search for \"blue\" and \"filter\"");
+				System.out.println("Expected outcome:");
+				System.out.println("blue = Present in trie\nfilter = Not present in trie");
+				System.out.println("Actual outcome: ");
+				Prac8.simpleTest();				
+				System.out.println("*Note: For extensive timed tests check Prac8.java");
+				System.out.println("*Note: For trie by hand check Prac8Doc.docx");
+				break;
+				
+			case 13:
+				// RLE - Prac9
+				System.out.println("You selected Run Length Encoding");
+				System.out.println("Let us use a sample input");
+				System.out.println("xxxaaaaazzzzzzjjjjjw");
+				String input = "xxxaaaaazzzzzzjjjjjw";
+				System.out.println("Expected compressed outcome:");
+				System.out.println("x3a5z6j5w1");
+				System.out.println("Actual compressed outcome: ");
+				Prac9.printRLE(input);		
+				System.out.println("\n*Note: For extensive tests check Prac9.java");
+				System.out.println("*Note: For analysis check Prac9Doc.docx");
 				break;
 
 			default:

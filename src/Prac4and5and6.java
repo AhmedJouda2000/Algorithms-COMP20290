@@ -1,3 +1,12 @@
+
+/**
+ * The {@code Prac4and5and6} class implements six different sort algorithms.
+ * A menu is provided in main to allow easy access.
+ * Array sizes can be changed.
+ * Sorted arrays can be printed, currently they aren't because its time consuming
+ *
+ * @author Ahmed Jouda
+ */
 import java.util.Random;
 import java.util.Scanner;
 
@@ -7,65 +16,62 @@ public class Prac4and5and6 {
 	public static void improvedQuickSort(int[] values) {
 		// shuffle at start to avoid worst case scenario
 		knuthShuffle(values);
-	    improvedSort(values, 0, values.length - 1);
-	  }
+		improvedSort(values, 0, values.length - 1);
+	}
 
-	  public static void improvedSort(int[] values, int left, int right) {
-	    int size = right - left + 1;
-	    //cut off for insertion sort
-	    if (size <= 10)
-	      insertionSort(values);
-	    else {
-	    	//set pivot as median of 3
-	      int pivot = medianOf3(values, left, right);
-	      	//get partition
-	      int partition = partitionIt(values, left, right, pivot);
-	      	//recursively sort elements before
-	      	//and after partition
-	      improvedSort(values, left, partition - 1);
-	      improvedSort(values, partition + 1, right);
-	    }
-	  }
+	public static void improvedSort(int[] values, int left, int right) {
+		int size = right - left + 1;
+		// cut off for insertion sort
+		if (size <= 10)
+			insertionSort(values);
+		else {
+			// set pivot as median of 3
+			int pivot = medianOf3(values, left, right);
+			// get partition
+			int partition = partitionIt(values, left, right, pivot);
+			// recursively sort elements before
+			// and after partition
+			improvedSort(values, left, partition - 1);
+			improvedSort(values, partition + 1, right);
+		}
+	}
 
-	  public static int medianOf3(int[] values, int left, int right) {
-	    int center = (left + right) / 2;
-	    
-	    //order left and center (low and middle)
-	    if (values[left] > values[center])
-	      swap(values, left, center);
+	public static int medianOf3(int[] values, int left, int right) {
+		int center = (left + right) / 2;
 
-	    //order left and right (low and high)
-	    if (values[left] > values[right])
-	      swap(values, left, right);
+		// order left and center (low and middle)
+		if (values[left] > values[center])
+			swap(values, left, center);
 
-	    //order center and right (middle and high)
-	    if (values[center] > values[right])
-	      swap(values, center, right);
+		// order left and right (low and high)
+		if (values[left] > values[right])
+			swap(values, left, right);
 
-	    swap(values, center, right - 1);	//place pivot on the right
-	    return values[right - 1];			//return median 
-	  }
+		// order center and right (middle and high)
+		if (values[center] > values[right])
+			swap(values, center, right);
 
+		swap(values, center, right - 1); // place pivot on the right
+		return values[right - 1]; // return median
+	}
 
-	  public static int partitionIt(int[] values, int left, int right, double pivot) {
-	    int leftPtr = left;	//pointer to the right of the first int
-	    int rightPtr = right - 1;	//pointer to before the pivot
+	public static int partitionIt(int[] values, int left, int right, double pivot) {
+		int leftPtr = left; // pointer to the right of the first int
+		int rightPtr = right - 1; // pointer to before the pivot
 
-	    while (true) {
-	      while (values[++leftPtr] < pivot)	//find bigger
-	        ;
-	      while (values[--rightPtr] > pivot) //find smaller
-	        ;
-	      if (leftPtr >= rightPtr) //if the pointers meet then done
-	        break;
-	      else	//else swap the elements
-	        swap(values, leftPtr, rightPtr);
-	    }
-	    swap(values, leftPtr, right - 1);	//put back the pivot
-	    return leftPtr;		
-	  }
-	
-	
+		while (true) {
+			while (values[++leftPtr] < pivot) // find bigger
+				;
+			while (values[--rightPtr] > pivot) // find smaller
+				;
+			if (leftPtr >= rightPtr) // if the pointers meet then done
+				break;
+			else // else swap the elements
+				swap(values, leftPtr, rightPtr);
+		}
+		swap(values, leftPtr, right - 1); // put back the pivot
+		return leftPtr;
+	}
 
 	// Improvement 2 - Shuffle to avoid worst case
 	public static void knuthShuffle(int[] a) {
@@ -92,7 +98,7 @@ public class Prac4and5and6 {
 
 	private static void sort(int numbers[], int low, int high) {
 		int i = low, j = high;
-		// Get the pivot element 
+		// Get the pivot element
 		int pivot = numbers[high - 1];
 
 		// Divide into two lists
@@ -118,8 +124,8 @@ public class Prac4and5and6 {
 				j--;
 			}
 		}
-	
-		//Call the function recursively
+
+		// Call the function recursively
 		if (low < j)
 			sort(numbers, low, j);
 		if (i < high)

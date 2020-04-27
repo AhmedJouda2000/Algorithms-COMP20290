@@ -1,4 +1,8 @@
-
+/**
+ * The {@code Prac8} class constructs a trie and allows search through it.
+ *
+ * @author Ahmed Jouda
+ */
 public class Prac8 {
 	// Alphabet size (# of symbols) we pick 26 for English alphabet
 	static final int ALPHABET_SIZE = 26;
@@ -73,6 +77,33 @@ public class Prac8 {
 
 	}
 
+	//Simple test
+	public static void simpleTest() {
+		// Input keys (use only 'a' through 'z' and lower case)
+				String keys[] = {"red", "blue", "yellow"};
+				root = new TrieNode();
+
+				// Construct trie
+				int i;
+				for (i = 0; i < keys.length; i++) {
+					insert(keys[i]);
+				}
+
+				// Search for different keys
+				
+				//should be present
+				if (search("blue") == true) {
+					System.out.println("blue = Present in trie");
+				} else
+					System.out.println("blue = Not present in trie");
+				
+				//shouldn't be present
+				if (search("filter") == true) {
+					System.out.println("filter = Present in trie");
+				} else
+					System.out.println("filter = Not present in trie");
+	}
+	
 	// Driver
 	public static void main(String args[]) {
 

@@ -21,7 +21,12 @@
  *  4 bytes
  *
  ******************************************************************************/
-
+/**
+ * The {@code Prac9b} class implements an algorithm that compresses
+ * and expands files.
+ *
+ * @author Ahmed Jouda
+ */
 
 /**
  *  The {@code RunLength} class provides static methods for compressing
