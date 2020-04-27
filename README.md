@@ -20,7 +20,7 @@ Tick all the files.<br />
 Click Finish.<br />
 Open and run Main.java.<br />
 
-### Result
+### Result / Basic Testing
 Main.java is a class that allows you to access almost all the other classes in this repository, however it doesn't demonstarte all functionality. It provides basic tests for each algorithm to check that its running correctly with the most simple inputs. These operations in Main.java are not timed or analysed, deep analysis is down using the individual main methods for each class, then discussed in the docx for each practical **in red**. <br />
 
 When you run Main.java a menu system pops up, you are promoted to select which program you want to run and test, the tests are all precoded and explained when executed. You can run as many test as you would like, 0 is entered to exit the program.<br />
@@ -100,5 +100,5 @@ In addition, includes an *AssignmentDoc.docx* which elaborates on the results an
 Ahmed Jouda
 
 # Acknowledgements
-Dr. Mark Mathews lectures and notes<br />
+Dr. Mark Matthews lectures and notes<br />
 Algorithms 4th Edition by Robert Sedgewick & Kevin Wayne
