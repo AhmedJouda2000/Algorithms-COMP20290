@@ -115,10 +115,14 @@ public class Prac8 {
 		root = new TrieNode();
 
 		// Construct trie
+		long starttime = System.nanoTime();
 		int i;
 		for (i = 0; i < keys.length; i++) {
 			insert(keys[i]);
 		}
+		long endtime = System.nanoTime();
+		long total = endtime - starttime;
+		System.out.println("time to insert keys:  " + total);
 
 		// Search for different keys
 		
