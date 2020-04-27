@@ -73,6 +73,7 @@ public class Main {
 				Prac4and5and6.insertionSort(arr);
 				Prac4and5and6.printArray(arr);
 				System.out.println("*Note: For extensive timed tests check Prac4and5and6.java");
+				System.out.println("*Note: Look at Prac4Doc.docx for analysis");
 				break;
 				
 			case 5:
@@ -87,6 +88,7 @@ public class Main {
 				Prac4and5and6.selectionSort(arr2);
 				Prac4and5and6.printArray(arr2);
 				System.out.println("*Note: For extensive timed tests check Prac4and5and6.java");
+				System.out.println("*Note: Look at Prac4Doc.docx for analysis");
 				break;
 				
 			case 6:
@@ -101,6 +103,7 @@ public class Main {
 				Prac4and5and6.bogoSort(arr3);
 				Prac4and5and6.printArray(arr3);
 				System.out.println("*Note: For extensive timed tests check Prac4and5and6.java");
+				System.out.println("*Note: Look at Prac4Doc.docx for analysis");
 				break;
 				
 			case 7:
@@ -115,6 +118,7 @@ public class Main {
 				Prac4and5and6.mergeSort(arr4);
 				Prac4and5and6.printArray(arr4);
 				System.out.println("*Note: For extensive timed tests check Prac4and5and6.java");
+				System.out.println("*Note: Look at Prac5Doc.docx for analysis");
 				break;
 				
 			case 8:
@@ -129,6 +133,7 @@ public class Main {
 				Prac4and5and6.improvedMergeSort(arr5);
 				Prac4and5and6.printArray(arr5);
 				System.out.println("*Note: For extensive timed tests check Prac4and5and6.java");
+				System.out.println("*Note: Look at Prac5Doc.docx for analysis");
 				break;
 				
 			case 9:
@@ -143,6 +148,7 @@ public class Main {
 				Prac4and5and6.quickSort(arr6);
 				Prac4and5and6.printArray(arr6);
 				System.out.println("*Note: For extensive timed tests check Prac4and5and6.java");
+				System.out.println("*Note: Look at Prac6Doc.docx for analysis");
 				break;
 				
 			case 10:
@@ -157,6 +163,7 @@ public class Main {
 				Prac4and5and6.improvedQuickSort(arr7);
 				Prac4and5and6.printArray(arr7);
 				System.out.println("*Note: For extensive timed tests check Prac4and5and6.java");
+				System.out.println("*Note: Look at Prac6Doc.docx for analysis");
 				break;
 
 			default:
