@@ -43,40 +43,64 @@ public class Prac3a_fib {
 
 	public static void main(String[] args) {
 
-		// test for first 10 fibonacci numbers using both methods
-		int maxNumber = 10;
-		System.out.print("Recursive series of " + maxNumber + " numbers: ");
-		for (int i = 1; i <= maxNumber; i++) {
-			System.out.print(fibRecursion(i) + " ");
-		}
-
-		System.out.print("\nIterative series of " + maxNumber + " numbers: ");
-		for (int i = 1; i <= maxNumber; i++) {
-			System.out.print(fibonacciIterative(i) + " ");
-		}
-
 		// test for first 20 fibonacci numbers using both methods
-		maxNumber = 20;
-		System.out.print("\n\nRecursive series of " + maxNumber + " numbers: ");
+		//recursive
+		int maxNumber = 20;
+		System.out.print("Recursive series of " + maxNumber + " numbers: ");
+		final long startTime = System.currentTimeMillis();
 		for (int i = 1; i <= maxNumber; i++) {
 			System.out.print(fibRecursion(i) + " ");
 		}
+		final long elapsedTime = System.currentTimeMillis() - startTime;
+		System.out.println("\nThe time taken for 20 numbers [RECURSIVELY]: " + elapsedTime);
 
+		//iterative
 		System.out.print("\nIterative series of " + maxNumber + " numbers: ");
+		final long startTime1 = System.currentTimeMillis();
 		for (int i = 1; i <= maxNumber; i++) {
 			System.out.print(fibonacciIterative(i) + " ");
 		}
+		final long elapsedTime1 = System.currentTimeMillis() - startTime1;
+		System.out.println("\nThe time taken for 20 numbers [ITERATIVELY]: " + elapsedTime1);
 
 		// test for first 30 fibonacci numbers using both methods
+		// recursive
 		maxNumber = 30;
 		System.out.print("\n\nRecursive series of " + maxNumber + " numbers: ");
+		final long startTime2 = System.currentTimeMillis();
 		for (int i = 1; i <= maxNumber; i++) {
 			System.out.print(fibRecursion(i) + " ");
 		}
+		final long elapsedTime2 = System.currentTimeMillis() - startTime2;
+		System.out.println("\nThe time taken for 30 numbers [RECURSIVELY]: " + elapsedTime2);
 
+		//iterative
 		System.out.print("\nIterative series of " + maxNumber + " numbers: ");
+		final long startTime3 = System.currentTimeMillis();
 		for (int i = 1; i <= maxNumber; i++) {
 			System.out.print(fibonacciIterative(i) + " ");
 		}
+		final long elapsedTime3 = System.currentTimeMillis() - startTime3;
+		System.out.println("\nThe time taken for 30 numbers [ITERATIVELY]: " + elapsedTime3);
+
+		// test for first 40 fibonacci numbers using both methods
+		//recursive
+		maxNumber = 40;
+		System.out.print("\n\nRecursive series of " + maxNumber + " numbers: ");
+		final long startTime4 = System.currentTimeMillis();
+		for (int i = 1; i <= maxNumber; i++) {
+			System.out.print(fibRecursion(i) + " ");
+		}
+		final long elapsedTime4 = System.currentTimeMillis() - startTime4;
+		System.out.println("\nThe time taken for 40 numbers [RECURSIVELY]: " + elapsedTime4);
+
+		//iterative
+		System.out.print("\nIterative series of " + maxNumber + " numbers: ");
+		final long startTime5 = System.currentTimeMillis();
+		for (int i = 1; i <= maxNumber; i++) {
+			System.out.print(fibonacciIterative(i) + " ");
+		}
+		final long elapsedTime5 = System.currentTimeMillis() - startTime5;
+		System.out.println("\nThe time taken for 40 numbers [ITERATIVELY]: " + elapsedTime5);
 	}
 }

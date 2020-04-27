@@ -39,6 +39,7 @@ public class Main {
 				System.out.println("Expected outcome: 55");
 				System.out.println("Actual outcome via recursion: " + Prac3a_fib.fibRecursion(10));
 				System.out.println("Actual outcome via iteration: " + Prac3a_fib.fibonacciIterative(10));
+				System.out.println("*Note: For timed perfomance test check Prac3a_fib.java");
 				break;
 				
 			case 3:
