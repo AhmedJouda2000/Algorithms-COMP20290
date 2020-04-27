@@ -32,13 +32,68 @@ When you run Main.java a menu system pops up, you are promoted to select which p
 - Practical two has its own folder 'Prac2' which contains all the files needed to run it.
 - Practical nine has its own folder 'Prac9extras' which contains all the resultant files from running it i.e. bin files
 - Each practical has its own filled in .docx file, it includes results analyis and answers to relevant short questions.
+
 ### Detailed
-Prac1.java
+#### *Src Folder*
+**Main.java**<br />
+As explained in "Getting Started" above, Main.java is a class that allows you to access almost all the other classes in this repository, however it doesn't demonstarte all functionality. It provides basic tests for each algorithm to check that its running correctly with the most simple inputs.<br />
+**Prac1.java**<br />
+Implements the *Russian Peasant* Algorithm and tests it.<br />
+**Prac1Doc.docx**<br />
+Includes results analysis of the *Russian Peasant* code & relevant answered short questions.<br />
+**Prac2Doc.docx**<br />
+Includes results analysis of the *ThreeSum* code & relevant answered short questions.<br />
+**Prac3a_fib.java**<br />
+Implements the *Fibonacci numbers recurively & iteratively* and tests them.<br />
+**Prac3b_hanoi.java**<br />
+Implements the *Towers of Hanoi* and tests the algorithm.<br />
+**Prac3Doc.docx**<br />
+Includes results analysis of the *Fibonacci recursive & iterative* ways and the *tower of Hanoi* code & relevant answered short questions.<br />
+**Prac4and5and6.java**<br />
+Implements a menu based program to run: *Insertion Sort, Selection Sort, Bogo Sort, Merge Sort, Improved Merge Sort, Quick Sort and Improved Quick Sort*. The program allows you to test each sort with different sizes of inputs and times it.<br />
+**Prac4Doc.docx**<br />
+Includes results analysis of *Insertion Sort, Selection Sort and Bogo Sort* & relevant answered short questions.<br />
+**Prac5Doc.docx**<br />
+Includes results analysis of *Merge Sort and Improved Merge Sort* & relevant answered short questions.<br />
+**Prac6Doc.docx**<br />
+Includes results analysis of *Quick Sort and Improved Quick Sort* & relevant answered short questions.<br />
+**Prac7.java**<br />
+Implements substring seach algorithms: *Brute Force Method* and *Knuth Morris Pratt* Algorithm and tests them.<br />
+**Prac7Doc.docx**<br />
+Includes results analysis of the *Brute Force Method* and *Knuth Morris Pratt* Algorithm & relevant answered short questions.<br />
+**Prac8.java**<br />
+Implements a *Trie* using keys and searches for words in it. It is also tested extensively.<br />
+**Prac8Doc.docx**<br />
+Includes results analysis of the *Trie* code (insertion and search) & relevant answered short questions (Trie by hand).<br />
+**Prac9.java**<br />
+Implements *Run Length Encoding* algorithm and tests it.<br />
+**Prac9b.java**<br />
+An algorithm to compress and decompress files.<br />
+**Prac9Doc.docx**<br />
+Includes results analysis of the *Run Length Encoding* Algorithm & relevant answered short questions. It also includes the results of the file compressions done in Prac9b.java<br />
+**BinaryStdIn.java and BinaryStdOut.java**<br />
+Needed java files to be able to run *Run Length Encoding*, they support reading and writing binary data into the Standard input/output.<br />
+
+#### *Prac2 Folder*
+Includes the two implementations of *ThreeSum* and their dependencies and text files used to run them.<br />
+In addition, the same *Prac2Doc.docx* from Src folder is present here.<br />
+
+#### *Prac9extras Folder*
+Includes all the dependencies, text files and bins used to run *RunLength.java*. Also includes the generated files in the process of compression/decompression.<br />
+In addition, the same *Prac9Doc.docx* from Src folder is present here which elaborates on the results.<br />
+
+#### *Assignment Folder*
+**Huffman.java**<br />
+The driver code that compresses adnd expands files using the huffman algorithm.<br />
+Includes all the dependencies, text files and bins used to run *Huffman.java*, such as *BinaryDump.java, BinaryStdOut.java etc.*.<br /> 
+Also includes the generated files in the process of compression/decompression.<br />
+In addition, includes an *AssignmentDoc.docx* which elaborates on the results and algorithm build and perfromance.<br />
 
 # Notes
-The word documents contains:
-- Results analysis of the code for each lab (Graphs, tables, etc.) (**In red**)
-- Some of them contain answered short questions about the relevant topic.
+- The detailed tests are done in main in the java files, all you have to do is run them. Main.java *doesn't* include timed/extensive tests, please test each program through its own individual main in its java file.
+- The word documents contains:
+- - Results analysis of the code for each lab (Graphs, tables, etc.) (**In red**)
+- - Some of them contain answered short questions about the relevant topic.
 
 
 # Author 
