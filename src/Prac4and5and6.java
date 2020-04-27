@@ -1,4 +1,6 @@
 import java.util.Random;
+import java.util.Scanner;
+
 
 public class Prac4and5and6 {
 	
@@ -22,63 +24,38 @@ public class Prac4and5and6 {
 				insertionSort(values);
 			}
 	        
-	        if (high<=low) {
-				return;
-			}
-	        else {
-	        	// Sort low, middle, high
-	            int middle = ( low + high ) / 2;
-	            if( values[ middle ] < values[ low ] )
-	                exchange( values, low, middle );
-	            if( values[ high ] < values[ low ] )
-	                exchange( values, low, high );
-	            if( values[ high ] < values[ middle ]  )
-	                exchange(values, middle, high );
-	        	
-	         // Place pivot at position high - 1
-	            exchange( values, middle, high - 1 );
-	            int pivot = values[ high - 1 ];
-	            
-	         // Begin partitioning
-	            int i = low, j = high;	       
-
-	            // Divide into two lists
-	            while (i <= j) {
-	                // If the current value from the left list is smaller than the pivot
-	                // element then get the next element from the left list
-	                while (values[i] < pivot) {
-	                    i++;
-	                }
-	                // If the current value from the right list is larger than the pivot
-	                // element then get the next element from the right list
-	                while (values[j] > pivot) {
-	                    j--;
-	                }
-
-	                // If we have found a value in the left list which is larger than
-	                // the pivot element and if we have found a value in the right list
-	                // which is smaller than the pivot element then we exchange the
-	                // values.
-	                // As we are done we can increase i and j
-	                if (i <= j) {
-	                    exchange(values, i, j);
-	                    i++;
-	                    j--;
-	                }
-	            }
-	             
-	            // Restore pivot
-	            exchange( values, i, high - 1 );
-	            
-	        	improvedSort(values, low, i-1);
-	        	improvedSort(values, i+1, high);
-	    		
-	    	}
+	     // If both cursor scanned the complete array quicksort exits
+	        if(low >= high)
+	            return;
+	         
+	        // For the simplicity, we took the right most item of the array as a pivot 
+	        int pivot = values[high];
+	        int partition = partition(values, low, high, pivot);
+	         
+	        // Recursively, calls the quicksort with the different left and right parameters of the sub-array
+	        improvedSort(values, 0, partition-1);
+	        improvedSort(values, partition+1, high);
 	    		
 	        }
 		
-		
-	
+		 // This method is used to partition the given array and returns the integer which points to the sorted pivot index
+	    private static int partition(int[] a, int left,int right,int pivot){
+	        int leftCursor = left-1;
+	        int rightCursor = right;
+	        while(leftCursor < rightCursor){
+	                while(a[++leftCursor] < pivot);
+	                while(rightCursor > 0 && a[--rightCursor] > pivot);
+	            if(leftCursor >= rightCursor){
+	                break;
+	            }else{
+	                swap(a,leftCursor, rightCursor);
+	            }
+	        }
+	        swap(a, leftCursor, right);
+	        return leftCursor;
+	    }
+	    
+
 	
 	//Improvement 2 - Shuffle to avoid worst case
 	public static void knuthShuffle(int[] a) {
@@ -172,7 +149,9 @@ public class Prac4and5and6 {
 	    mergeSort(l);
 	    mergeSort(r);
 	    
-	    if (!(a[mid+1]<a[mid])) {
+	    if (l[l.length-1]<=r[0]) {
+	    	System.arraycopy(l, 0, a, 0, l.length);
+	    	System.arraycopy(r, 0, a, l.length, r.length);
 			return;
 		}
 	    
@@ -252,10 +231,10 @@ public class Prac4and5and6 {
 			int key = arr[i];
 			int j = i - 1;
 
-			/*
-			 * Move elements of arr[0..i-1], that are greater than key, to one position
-			 * ahead of their current position
-			 */
+			
+			 // Move elements of arr[0..i-1], that are greater than key, to one position
+			 // ahead of their current position
+			 
 			while (j >= 0 && arr[j] > key) {
 				arr[j + 1] = arr[j];
 				j = j - 1;
@@ -302,7 +281,7 @@ public class Prac4and5and6 {
     
     
 	// Prints the array
-	private static void printArray(int arr[]) {
+	public static void printArray(int arr[]) {
 		int n = arr.length;
 		for (int i = 0; i < n; ++i)
 			System.out.print(arr[i] + " ");
@@ -316,7 +295,20 @@ public class Prac4and5and6 {
 
 		System.out.println("*****Testing in Main*****");
 		//use an integer variable to decide which sorting algorithm to use below
-		int type = 6; 
+		Scanner sc = new Scanner(System.in);
+		System.out.print("------------------------------------------------------------------\n");
+		System.out.println("\t\tSORTS LIST");
+		System.out.println("Enter 0 for Selection Sort          [Practical 4]");
+		System.out.println("Enter 1 for Insertion Sort          [Practical 4]");
+		System.out.println("Enter 2 for Bogo Sort               [Practical 4]");
+		System.out.println("Enter 3 for Merge Sort              [Practical 5]");
+		System.out.println("Enter 4 for Improved Merge Sort     [Practical 5]");
+		System.out.println("Enter 5 for Quick Sort              [Practical 6]");
+		System.out.println("Enter 6 for Improved Quick Sort     [Practical 6]");
+		System.out.print("Select which sort you want to run/test: ");
+		
+		int type = sc.nextInt();
+
 
 					
 		///adjust input size to vary size of arrays
@@ -393,6 +385,7 @@ public class Prac4and5and6 {
 						
 						
 					}
+		sc.close();
 
 				}
 
