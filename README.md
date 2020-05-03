@@ -90,7 +90,7 @@ Includes all the dependencies, text files and bins used to run *Huffman.java*, s
 **Other files**<br />
 All original, compressed and decompressed files are in the folder. <br />
 Compressed files' names end with "_comp", while decompressed end with "_decomp <br />
-Includes an *AssignmentDoc.docx* which elaborates on the results and algorithm build and perfromance.
+Includes an *AssignmentDoc.pdf* which elaborates on the results and algorithm build and perfromance.
 
 # Notes
 - The detailed tests are done in main in the java files, all you have to do is run them. Main.java *doesn't* include timed/extensive tests, please test each program through its own individual main in its java file.
