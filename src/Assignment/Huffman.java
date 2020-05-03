@@ -1,7 +1,5 @@
 package Assignment;
 
-import java.util.Scanner;
-
 //import com.sun.tools.classfile.StackMapTable_attribute.same_frame;
 
 //import BinaryStdIn;
@@ -27,6 +25,8 @@ public class Huffman {
 
   // alphabet size of extended ASCII
   private static final int R = 256;
+  static BinaryOut out;
+  static BinaryIn  in;
 
   // Do not instantiate.
   private Huffman() { }
@@ -63,7 +63,7 @@ public class Huffman {
    */
   public static void compress() {
       // read the input
-  	String readString = BinaryStdIn.readString();
+  	String readString = in.readString();
   	char[] input = readString.toCharArray();
 
       // tabulate frequency counts
@@ -83,17 +83,17 @@ public class Huffman {
   	writeTrie(rootNode);
 
       // print number of bytes in original uncompressed message
-  	BinaryStdOut.write(input.length);
+  	out.write(input.length);
 
       // use Huffman code to encode input
   	for (int i = 0; i < input.length; i++) {
 			String codeString = codeStrings[input[i]];
 			for (int j = 0; j < codeString.length(); j++)
 				if (codeString.charAt(j) == '1')
-					BinaryStdOut.write(true);
-				else BinaryStdOut.write(false);
+					out.write(true);
+				else out.write(false);
 		}
-  	BinaryStdOut.close();
+  	out.close();
   }
 
 
@@ -107,19 +107,19 @@ public class Huffman {
   	Node rootNode = readTrie();
 
       // number of bytes to write
-  	int N = BinaryStdIn.readInt();
+  	int N = in.readInt();
 
       // decode using the Huffman trie
   	for (int i = 0; i < N; i++)
   	{
 			Node tempNode = rootNode;
 			while (!tempNode.isLeaf())
-				if (BinaryStdIn.readBoolean())
+				if (in.readBoolean())
 					tempNode = tempNode.right;
 				else tempNode = tempNode.left;
-			BinaryStdOut.write(tempNode.ch);
+			out.write(tempNode.ch);
 		}
-  	BinaryStdOut.close();
+  	out.close();
   }
 
   // build the Huffman trie given frequencies
@@ -151,11 +151,11 @@ public class Huffman {
   // write bitstring-encoded trie to standard output
   private static void writeTrie(Node x) {
       if (x.isLeaf()) {
-          BinaryStdOut.write(true);
-          BinaryStdOut.write(x.ch, 8);
+          out.write(true);
+          out.write(x.ch, 8);
           return;
       }
-      BinaryStdOut.write(false);
+      out.write(false);
       writeTrie(x.left);
       writeTrie(x.right);
   }
@@ -174,14 +174,40 @@ public class Huffman {
 
 
   private static Node readTrie() {
-      boolean isLeaf = BinaryStdIn.readBoolean();
+      boolean isLeaf = in.readBoolean();
       if (isLeaf) {
-          return new Node(BinaryStdIn.readChar(), -1, null, null);
+          return new Node(in.readChar(), -1, null, null);
       }
       else {
           return new Node('\0', -1, readTrie(), readTrie());
       }
   }
+
+public static void size(String[] args){
+  int bitsPerLine = 16;
+
+
+  int count;
+  for (count = 0; !in.isEmpty(); count++) {
+      if (bitsPerLine == 0) {
+          in.readBoolean();
+          continue;
+      }
+      else if (count != 0 && count % bitsPerLine == 0) StdOut.println();
+      if (in.readBoolean()) StdOut.print(1);
+      else                           StdOut.print(0);
+  }
+  if (bitsPerLine != 0) StdOut.println();
+  StdOut.println(count + " bits");
+}
+
+public static void size2(String filename){
+  //BufferedInputStream in = new BufferedInputStream(filename);
+  //System.out.println("hi " + in.available());
+}
+
+
+
 
   /**
    * Sample client that calls {@code compress()} if the command-line
@@ -190,8 +216,32 @@ public class Huffman {
    * @param args the command-line arguments
    */
   public static void main(String[] args) {
-  	 if      (args[0].equals("compress")) compress();
-       else if (args[0].equals("decompress")) decompress();
+
+    String filename = args[2];
+    out = new BinaryOut(filename);
+    in  = new BinaryIn(args[1]);
+
+  	 if     (args[0].equals("compress"))
+     {
+       System.out.println("Compression Start");
+       System.out.println("File to be compressed: " + args[1]);
+       System.out.println("File compressed into: " + args[2]);
+       final long startTime = System.currentTimeMillis();
+       compress();
+       final long elapsedTime = System.currentTimeMillis() - startTime;
+       System.out.println("The time taken: " + elapsedTime);
+       System.out.println("Compression End");
+     }
+       else if (args[0].equals("decompress")) {
+         System.out.println("Decompression Start");
+         System.out.println("File to be decompressed: " + args[1]);
+         System.out.println("File decompressed into: " + args[2]);
+         final long startTime = System.currentTimeMillis();
+         decompress();
+         final long elapsedTime = System.currentTimeMillis() - startTime;
+         System.out.println("The time taken: " + elapsedTime);
+         System.out.println("Decompression End");
+       }
        else throw new IllegalArgumentException("Illegal command line argument");
   }
 
