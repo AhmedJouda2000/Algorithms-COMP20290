@@ -86,8 +86,11 @@ In addition, the same *Prac9Doc.docx* from Src folder is present here which elab
 **Huffman.java**<br />
 The driver code that compresses adnd expands files using the huffman algorithm.<br />
 Includes all the dependencies, text files and bins used to run *Huffman.java*, such as *BinaryDump.java, BinaryStdOut.java etc.*.<br /> 
-Also includes the generated files in the process of compression/decompression.<br />
-In addition, includes an *AssignmentDoc.docx* which elaborates on the results and algorithm build and perfromance.<br />
+
+**Other files**<br />
+All original, compressed and decompressed files are in the folder. <br />
+Compressed files' names end with "_comp", while decompressed end with "_decomp <br />
+Includes an *AssignmentDoc.docx* which elaborates on the results and algorithm build and perfromance.
 
 # Notes
 - The detailed tests are done in main in the java files, all you have to do is run them. Main.java *doesn't* include timed/extensive tests, please test each program through its own individual main in its java file.
